@@ -4,12 +4,19 @@ using UnityEngine;
 
 namespace _Scripts
 {
-    class TimeUI : MonoBehaviour
+    public class TimeUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI counterText;
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private TimeManager timeManager;
-        [SerializeField] private Color normalColor, errorColor;
+        [SerializeField] private Color normalColor = new Color(0.961f, 0.957f, 0.996f, 1f); // #F5F4FE
+        [SerializeField] private Color errorColor = new Color(1f, 0.30f, 0.30f, 1f);       // #FF4D4D
+
+        private void Start()
+        {
+            if (normalColor.a == 0) normalColor = new Color(0.961f, 0.957f, 0.996f, 1f);
+            if (errorColor.a == 0) errorColor = new Color(1f, 0.30f, 0.30f, 1f);
+        }
 
         private void OnEnable() {
             if (_gameManager != null)
